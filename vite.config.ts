@@ -18,6 +18,7 @@ export default defineConfig({
 			],
 		}),
 	],
+	base: process.env.GITHUB_REPO_NAME ?? "./",
 	build: {
 		rollupOptions: {
 			output: {
