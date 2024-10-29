@@ -1,27 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Links } from "./App";
 import { MermaidComponent } from "./MermaidComponent";
 import { m1, m2, m3 } from "./examples";
-
-// Ctrl+Enterで何かをするカスタムフック
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-function useCtrlEnter(callback: () => void, dependencies: any[] = []) {
-	const handleKeyDown = useCallback(
-		(event: KeyboardEvent) => {
-			if (event.ctrlKey && event.key === "Enter") {
-				callback();
-			}
-		},
-		[callback],
-	);
-
-	useEffect(() => {
-		document.addEventListener("keydown", handleKeyDown);
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
-	}, [handleKeyDown, ...dependencies]);
-}
+import { useCtrlEnter } from "./hooks";
 
 function App() {
 	const [mcode, setMcode] = useState<string>("");
@@ -47,9 +28,12 @@ function App() {
 			<h1>4. Mermaid を入力/更新してみる</h1>
 			{mcode2 ? <MermaidComponent src={mcode2} /> : <div>(ここに図が描画されます)</div>}
 			<div>
-				<textarea ref={textareaRef} className="ta1" onChange={(e) => setMcode(e.target.value)}>
-					{mcode}
-				</textarea>
+				<textarea
+					ref={textareaRef}
+					className="ta1"
+					value={mcode}
+					onChange={(e) => setMcode(e.target.value)}
+				/>
 				<br />
 				<button type="button" onClick={updateMcode2}>
 					更新 (Ctrl+Enter)
