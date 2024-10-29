@@ -1,14 +1,29 @@
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
+import cdn from "vite-plugin-cdn-import";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
+	plugins: [
+		react(),
+		cdn({
+			modules: [
+				"react",
+				"react-dom",
+				{
+					name: "mermaid",
+					var: "mermaid",
+					path: "dist/mermaid.min.js",
+				},
+			],
+		}),
+	],
 	build: {
 		rollupOptions: {
 			output: {
 				manualChunks: {
-					r: ["react", "react-dom"],
+					r: ["react-router-dom"],
+					// r: ["react", "react-dom"],
 				},
 			},
 		},
