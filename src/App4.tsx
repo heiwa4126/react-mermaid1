@@ -27,28 +27,30 @@ function App() {
 		<>
 			<h1>4. Mermaid を入力/更新してみる</h1>
 			{mcode2 ? <MermaidComponent src={mcode2} /> : <div>(ここに図が描画されます)</div>}
-			<div>
-				<textarea
-					ref={textareaRef}
-					className="ta1"
-					value={mcode}
-					onChange={(e) => setMcode(e.target.value)}
-				/>
-				<br />
-				<button type="button" onClick={updateMcode2}>
-					更新 (Ctrl+Enter)
-				</button>
-			</div>
-			<div>
-				<button type="button" onClick={() => updateAll(m1)}>
-					↑ サンプル1
-				</button>
-				<button type="button" onClick={() => updateAll(m2)}>
-					↑ サンプル2
-				</button>
-				<button type="button" onClick={() => updateAll(m3)}>
-					↑ サンプル3
-				</button>
+			<div className="container">
+				<div>
+					<textarea
+						ref={textareaRef}
+						className="ta1"
+						value={mcode}
+						onChange={(e) => setMcode(e.target.value)}
+					/>
+					<br />
+					<button type="button" onClick={updateMcode2}>
+						更新 (Ctrl+Enter)
+					</button>
+				</div>
+				<div className="button-container">
+					<button type="button" onClick={() => updateAll(m1)}>
+						← サンプル 1:フロー図
+					</button>
+					<button type="button" onClick={() => updateAll(m2)}>
+						← サンプル 2:ガントチャート
+					</button>
+					<button type="button" onClick={() => updateAll(m3)}>
+						← サンプル 3:パイチャート
+					</button>
+				</div>
 			</div>
 			<nav>
 				<Links />

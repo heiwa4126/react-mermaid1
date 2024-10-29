@@ -17,7 +17,7 @@ interface McodeVal {
 }
 const initialMcode = McodeKey.m2j;
 const mcodeDatas: Map<McodeKey, McodeVal> = new Map([
-	[McodeKey.m1, { data: m1, label: " 表示期間自動" }],
+	[McodeKey.m1, { data: m1, label: "フロー図" }],
 	[McodeKey.m2, { data: m2, label: "ガントチャート(英語)" }],
 	[McodeKey.m2j, { data: m2j, label: "ガントチャート(日本語)" }],
 	[McodeKey.m3, { data: m3, label: "パイチャート" }],

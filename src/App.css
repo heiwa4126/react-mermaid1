@@ -17,3 +17,22 @@ nav {
 	height: 15em;
 	font-size: 1.1em;
 }
+
+.container {
+	display: flex;
+	margin-bottom: 0.5em;
+}
+
+/* .container > div {
+	margin: 0.5em;
+} */
+
+.button-container {
+	margin-left: 0.8em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.2em;
+}
+.button-container button{
+	text-align: left;
+}
