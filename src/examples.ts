@@ -1,12 +1,10 @@
-export const m1 = `
-graph TD
+export const m1 = `graph TD
 A[Client] --> B[Load Balancer]
 B --> C[Server01]
 B --> D[Server02]
 `;
 
-export const m2 = `
-gantt
+export const m2 = `gantt
 title A Gantt Diagram
 dateFormat  YYYY-MM-DD
 section Section
