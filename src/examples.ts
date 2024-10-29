@@ -25,3 +25,8 @@ section あるセクション
 section 別のセクション
 秘密のタスク     :2014-01-12  , 12d
 またタスク    : 24d`;
+
+export const m3 = `pie title Pets adopted by volunteers
+    "Dogs" : 386
+    "Cats" : 85
+    "Rats" : 15`;

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Links } from "./App";
 import { MermaidComponent } from "./MermaidComponent";
-import { m1, m2, m2j } from "./examples";
+import { m1, m2, m2j, m3 } from "./examples";
 
 // #region サンプルMermaidコード
 enum McodeKey {
 	m1 = "m1",
 	m2 = "m2",
 	m2j = "m2j",
+	m3 = "m3",
 } // NOTE: 文字列がのぞましい
 
 interface McodeVal {
@@ -19,6 +20,7 @@ const mcodeDatas: Map<McodeKey, McodeVal> = new Map([
 	[McodeKey.m1, { data: m1, label: " 表示期間自動" }],
 	[McodeKey.m2, { data: m2, label: "ガントチャート(英語)" }],
 	[McodeKey.m2j, { data: m2j, label: "ガントチャート(日本語)" }],
+	[McodeKey.m3, { data: m3, label: "パイチャート" }],
 ]);
 // #endregion
 
