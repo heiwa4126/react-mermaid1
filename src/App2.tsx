@@ -5,9 +5,10 @@ import { m2j } from "./examples";
 function App() {
 	return (
 		<>
-			<h1>2. サンプルその2 - 下のテキストが上の図になる</h1>
-			<MermaidComponent src={m2j} />
+			<h1>2. サンプルその2 - 上のテキストが下の図になる</h1>
 			<pre>{m2j}</pre>
+			<p>↓</p>
+			<MermaidComponent src={m2j} />
 			<nav>
 				<Links />
 			</nav>

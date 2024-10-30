@@ -31,7 +31,7 @@ export function Links() {
 				<Link to="/3">プルダウンで更新できるかテスト</Link>
 			</li>
 			<li>
-				<Link to="/2">サンプルその2 - 下のテキストが上の図になる</Link>
+				<Link to="/2">サンプルその2 - 上のテキストが下の図になる</Link>
 			</li>
 			<li>
 				<Link to="/1">サンプルその1 - Mermaidとはこういうやつ</Link>

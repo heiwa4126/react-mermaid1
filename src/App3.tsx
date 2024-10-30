@@ -46,9 +46,9 @@ function App() {
 					</option>
 				))}
 			</select>
-			<MermaidComponent src={selectedMcode} />
 			<pre>{selectedMcode}</pre>
-
+			<p>↓</p>
+			<MermaidComponent src={selectedMcode} />
 			<nav>
 				<Links />
 			</nav>
