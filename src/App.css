@@ -33,6 +33,6 @@ nav {
 	flex-direction: column;
 	gap: 0.2em;
 }
-.button-container button{
+.button-container button {
 	text-align: left;
 }
