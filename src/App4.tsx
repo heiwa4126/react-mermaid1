@@ -53,7 +53,7 @@ function App() {
 				</div>
 			</div>
 			<nav>
-				<Links />
+				<Links me="/4" />
 			</nav>
 		</>
 	);

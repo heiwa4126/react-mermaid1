@@ -9,7 +9,7 @@ function App() {
 			<MermaidComponent src={m1} />
 			<MermaidComponent src={m2} />
 			<nav>
-				<Links />
+				<Links me="/1" />
 			</nav>
 		</>
 	);

@@ -10,7 +10,7 @@ function App() {
 			<p>↓</p>
 			<MermaidComponent src={m2j} />
 			<nav>
-				<Links />
+				<Links me="/2" />
 			</nav>
 		</>
 	);
