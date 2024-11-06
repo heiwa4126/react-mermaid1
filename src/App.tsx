@@ -5,6 +5,13 @@ import App2 from "./App2";
 import App3 from "./App3";
 import App4 from "./App4";
 
+const links = [
+	{ to: "/4", text: "Mermaidを入力/更新してみる" },
+	{ to: "/3", text: "プルダウンで更新できるかテスト" },
+	{ to: "/2", text: "サンプルその2 - 上のテキストが下の図になる" },
+	{ to: "/1", text: "サンプルその1 - Mermaidとはこういうやつ" },
+];
+
 function App() {
 	return (
 		<>
@@ -22,12 +29,6 @@ function App() {
 }
 
 export function Links({ me }: { me?: string }) {
-	const links = [
-		{ to: "/4", text: "Mermaidを入力/更新してみる" },
-		{ to: "/3", text: "プルダウンで更新できるかテスト" },
-		{ to: "/2", text: "サンプルその2 - 上のテキストが下の図になる" },
-		{ to: "/1", text: "サンプルその1 - Mermaidとはこういうやつ" },
-	];
 	return (
 		<ol reversed>
 			{links.map((link) => (
