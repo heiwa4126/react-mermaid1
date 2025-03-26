@@ -15,11 +15,11 @@ React で [Mermaid](http://mermaid.js.org/) 使うサンプル
 
 ## 開発
 
-Vite で React で TypeScript + Bun
+Vite で React で TypeScript + pnpm
 (たぶん npm でもなんでもいい)
 
 ```sh
-bun i
-bun dev
-bun run build & bun preview
+pnpm i
+pnpm dev
+pnpm run build && pnpm preview
 ```
