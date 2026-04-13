@@ -1,33 +1,22 @@
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [
-		react(),
-		// cdn({
-		// 	modules: [
-		// 		"react",
-		// 		"react-dom",
-		// 		{
-		// 			name: "mermaid",
-		// 			var: "mermaid",
-		// 			path: "dist/mermaid.min.js",
-		// 		},
-		// 	],
-		// }),
-	],
-	base: process.env.GITHUB_REPO_NAME ?? "./",
+	base: process.env.GITHUB_REPO_NAME ?? "",
+	plugins: [react()],
 	build: {
-		// rollupOptions: {
-		// 	output: {
-		// 		manualChunks: {
-		// 			r: ["react-router"],
-		// 		},
-		// 	},
-		// },
-	},
-	esbuild: {
-		drop: ["console", "debugger"], // https://esbuild.github.io/api/#drop
+		minify: true,
+		rolldownOptions: {
+			external: ["react", "react-dom/client"],
+			output: {
+				minify: {
+					compress: {
+						dropConsole: true,
+						dropDebugger: true,
+					},
+				},
+			},
+		},
 	},
 });
