@@ -8,7 +8,7 @@ export default defineConfig({
 	build: {
 		minify: true,
 		rolldownOptions: {
-			external: ["react", "react-dom/client", "react-router"],
+			external: ["react", "react-dom/client", "react-router", "mermaid"],
 			output: {
 				minify: {
 					compress: {
