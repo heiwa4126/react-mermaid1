@@ -1,0 +1,86 @@
+# Simple workflow for deploying static content to GitHub Pages
+# See:
+# - https://vitejs.dev/guide/static-deploy.html#github-pages
+# - https://github.com/actions/checkout/tree/v4/#readme
+# - https://github.com/actions/setup-node#readme
+# - https://github.com/pnpm/action-setup#readme
+
+# 有効にする手順
+# 1. GitHub の該当レポジトリで Settings ⇒ Pages ⇒ Source を GitHub Actions に設定。
+# 2. 同じく GitHub で Settings ⇒ Environment で、New environment を押して、 "github-pages"という environment を選択 (1.で作られるらしい)
+# 3. この environment の Deployment branches and tags の Add deployment branch or tag rule で プルダウンで Ref type を Tag にして Name pattern を v*.*.* と書く。 (こっちでは正規表現が使えないから。変だけど我慢すること)
+# GitHub Enterprise で使う場合は、上記に加え、secrets.IS_ENTERPRISE に true を設定する。
+
+name: Deploy static content to Pages
+
+# Remove the duplicate "on" key
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@08c4be7e2e672a47d11bd04269e27e5f3e8529cb # v6.0.0
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0 # zizmor: ignore[cache-poisoning]
+        with:
+          node-version: 24
+          cache: pnpm
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+        env:
+          GITHUB_REPO_NAME: "/${{ github.event.repository.name }}"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          # Upload repository
+          path: "./dist"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
