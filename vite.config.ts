@@ -8,7 +8,7 @@ export default defineConfig({
 	build: {
 		minify: true,
 		rolldownOptions: {
-			external: ["react", "react-dom/client"],
+			external: ["react", "react-dom/client", "react-router"],
 			output: {
 				minify: {
 					compress: {
